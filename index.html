@@ -3,34 +3,46 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>MySeriesFile</title>
+    <title>♡</title>
     <link
-      href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Varela+Round&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./styles/main.css" />
   </head>
   <body>
     <header>
-      <h1>My Series File ♡</h1>
+      <h1 class="title">My Series File ♡</h1>
     </header>
-    <main>
-      <h2>Search your serie:</h2>
-      <form method="POST" action="">
-        <label for="search"></label>
-        <input
-          class="js-input"
-          id="search"
-          type="text"
-          name="search"
-          value
-          placeholder="Example: Lost"
-        />
-        <input class="js-button" type="button" name="button" value="Search" />
-      </form>
-      <section>
-        <articles class="js-containers"></articles>
+    <main class="main">
+      <section class="section1">
+        <h2>Search your serie</h2>
+        <form method="POST" action="">
+          <label for="search"></label>
+          <input
+            class="js-input"
+            id="search"
+            type="text"
+            name="search"
+            value
+            placeholder="Example: Lost"
+          />
+          <input
+            class="js-button"
+            type="button"
+            name="button"
+            value="Search!"
+          />
+        </form>
       </section>
+
+      <section class="section2 favorites">
+        <h3>My favourite Series:</h3>
+        <ul class="js-favorites-list"></ul>
+        <button class="js-favorites-reset">Clean!</button>
+      </section>
+
+      <section class="section3 container js-containers"></section>
     </main>
 
     <script src="./js/main.js"></script>
