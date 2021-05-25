@@ -5,6 +5,7 @@
 
 /*HEADER*/
 .header-part {
+  padding: 10px;
   background-color: rgb(253, 249, 249);
 }
 .header-part__title {
@@ -75,8 +76,8 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  margin-left: 200px;
-  margin-right: 200px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 .main-part__section2 {
   background-color: white;
