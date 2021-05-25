@@ -1,5 +1,5 @@
 "use strict";
-//////GLOBAL CONST//////////////////////////////////////////////////////////////////////////////
+//////GLOBAL CONSTANTS//////////////////////////////////////////////////////////////////////////////
 
 let series = [];
 let favoriteSeries = [];
@@ -12,35 +12,24 @@ const url = "//api.tvmaze.com/search/shows?q=";
 const imageDefault =
   "https://via.placeholder.com/210x295/ffffff/666666/?text=TV";
 
-//////FETCH////////////////////////////////////////////////////////////////////////////////////
+//////FETCH////////////////////////////////////////////////////////////////////////////////////////
 
 function handlerGetData(ev) {
   ev.preventDefault();
   let inputValue = document.querySelector(".js-input").value;
 
-  //if ( localStorage.getItem("favoriteSeries") === null) {
-  //no tiene los datos guardados: fetch
   fetch(url + inputValue)
     .then((response) => response.json())
     .then((allSeries) => {
-      //console.log(allSeries);
       series = allSeries;
-      //setItem:
-      //localStorage.setItem("favoriteSeries", JSON.stringify(series));
+
       paintArticlesFetch();
-      //no invocaría a la función de favoritos: paintListFavorite() mejor?
     });
-  //}  else {
-  // sí tiene los datos guardados: cogerlos del localStorage
-  // const series = JSON.parse(localStorage.getItem("favoriteSeries"));
-  //paintArticlesHtml();
-  //no invocaría a la función de favoritos: paintListFavorite() mejor?
-  //}
 }
 
 buttonSearch.addEventListener("click", handlerGetData);
 
-//////PAINTING////////////////////////////////////////////////////////////////////////////////////
+//////PAINTING IN HTML/////////////////////////////////////////////////////////////////////////////
 
 function paintArticlesFetch() {
   sectionArticles.innerHTML = "";
@@ -88,7 +77,21 @@ function paintListFavorite(nameSerie, imgUrlSerie, idSerie) {
   return articleFavorite;
 }
 
-//////FAVORITES///////////////////////////////////////////////////////////////////////////////
+function paintFavorites(favoriteSeries) {
+  sectionFavorites.innerHTML = "";
+  for (const serie of favoriteSeries) {
+    let imgSerieFav =
+      serie.show.image !== null ? serie.show.image.medium : imageDefault;
+    let articleFavorite = paintListFavorite(
+      serie.show.name,
+      imgSerieFav,
+      serie.show.id
+    );
+    sectionFavorites.innerHTML += articleFavorite;
+  }
+}
+
+//////FAVORITES/////////////////////////////////////////////////////////////////////////////////////
 
 function addListenerSeries() {
   const allSeries = document.querySelectorAll(".js-containers-item");
@@ -117,48 +120,33 @@ function handlerPutFavourite(event) {
       return serie.show.id === idSerie;
     });
     favoriteSeries.push(clickedSerie);
-    console.log(favoriteSeries);
-    //si el id de la paleta en la que he hecho click está en el array de favoritos:
+
+    //si el objeto con id de la paleta en la que he hecho click está en el array de favoritos:
   } else {
-    console.log("series favoritas", favoriteSeries);
     const clickedSerie = series.find((serie) => {
       return serie.show.id === idSerie;
     });
-    console.log("clickedSerie", clickedSerie);
-    /*let position = favoriteSeries.indexOf(clickedSerie);
-    console.log("position serie encontrada", position);*/
+    //let position = favoriteSeries.indexOf(clickedSerie);
     //favoriteSeries = favoriteSeries.splice(position, 1);
     favoriteSeries = deleteFavorite(favoriteSeries, clickedSerie);
-    console.log("after series favoritas", favoriteSeries);
   }
 
   localStorage.setItem("FAVORITE_SERIES", JSON.stringify(favoriteSeries));
-  //console.log(favoriteSeries);
-  paintArticlesFetch();
+
   // pintame los favoritos:
-  //paintFavorites(favoriteSeries);
-  paintFavoriteFromLocalStorage();
+  paintArticlesFetch();
+
   // guardalo en el local storage:
-  //handlerGetData();
+  paintFavoriteFromLocalStorage();
 }
+
 function deleteFavorite(favoriteSeries, clickedSerie) {
   return favoriteSeries.filter(
     (elementFavorite) => elementFavorite.show.id !== clickedSerie.show.id
   );
 }
-function paintFavorites(favoriteSeries) {
-  sectionFavorites.innerHTML = "";
-  for (const serie of favoriteSeries) {
-    let imgSerieFav =
-      serie.show.image !== null ? serie.show.image.medium : imageDefault;
-    let articleFavorite = paintListFavorite(
-      serie.show.name,
-      imgSerieFav,
-      serie.show.id
-    );
-    sectionFavorites.innerHTML += articleFavorite;
-  }
-}
+
+//////LOCAL STORAGE/////////////////////////////////////////////////////////////////////////////////
 
 function paintFavoriteFromLocalStorage() {
   if (localStorage.getItem("FAVORITE_SERIES") === null) {

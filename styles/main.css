@@ -3,6 +3,7 @@
   padding: 0;
 }
 
+/*HEADER*/
 .header-part {
   background-color: rgb(253, 249, 249);
 }
@@ -69,6 +70,7 @@
   color: black;
 }
 
+/*MAIN*/
 .main-part {
   display: flex;
   flex-direction: column;
@@ -86,13 +88,8 @@
   padding: 20px;
   margin-top: 20px;
 }
-.span1 {
-  font-family: Varela Round;
-  font-size: 14px;
-  text-align: center;
-  color: #d6807f;
-  font-weight: bold;
-}
+
+/*MAIN:favorites*/
 .main-part__section2-theme {
   display: flex;
   flex-direction: row;
@@ -103,13 +100,6 @@
 }
 .main-part__section2--title {
   font-family: Fredoka One;
-}
-.list {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 10px;
 }
 .main-part__section2--button {
   display: block;
@@ -131,6 +121,13 @@
   color: #d6807f;
   background-color: black;
 }
+.list {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 10px;
+}
 .span2 {
   margin-top: 20px;
   font-family: Varela Round;
@@ -139,6 +136,8 @@
   color: #d6807f;
   font-weight: bold;
 }
+
+/*MAIN:items*/
 .palette-item {
   display: flex;
   flex-direction: column;
@@ -165,6 +164,8 @@
 .hidden {
   display: none;
 }
+
+/*MAIN:favorites*/
 .favorite {
   background-color: black;
   color: rgb(253, 207, 207);
