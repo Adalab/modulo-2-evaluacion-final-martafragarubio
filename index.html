@@ -9,40 +9,48 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./styles/main.css" />
+    <link rel="icon" href="./assets/images/favicon.png" />
   </head>
-  <body>
-    <header>
-      <h1 class="title">My Series File ♡</h1>
-    </header>
-    <main class="main">
-      <section class="section1">
-        <h2>Search your serie</h2>
-        <form method="POST" action="">
-          <label for="search"></label>
+  <body class="body">
+    <header class="header-part">
+      <h1 class="header-part__title">My Series File</h1>
+
+      <div class="header-part__search">
+        <h2 class="header-part__search--subtitle">Find your series</h2>
+        <form class="header-part__search--form" method="POST" action="">
+          <label class="header-part__search--label" for="search"></label>
           <input
-            class="js-input"
+            class="header-part__search--input js-input"
             id="search"
             type="text"
             name="search"
-            value
+            value=""
             placeholder="Example: Lost"
           />
           <input
-            class="js-button"
+            class="header-part__search--button js-button"
             type="button"
             name="button"
-            value="Search!"
+            value="Go!"
           />
         </form>
-      </section>
+      </div>
+    </header>
 
-      <section class="section2 favorites">
-        <h3>My favourite Series:</h3>
-        <ul class="js-favorites-list"></ul>
-        <button class="js-favorites-reset">Clean!</button>
+    <main class="main-part">
+      <section class="main-part__section2 favorites">
+        <!--<span class="span1">Add your favorite series </span>-->
+        <div class="main-part__section2-theme">
+          <h3 class="main-part__section2--title">My favorite Series ♡</h3>
+          <button class="main-part__section2--button js-favorites-reset">
+            Clean!
+          </button>
+        </div>
+        <ul class="js-favorites-list list"></ul>
       </section>
+      <span class="span2">Click your favorite series!</span>
 
-      <section class="section3 container js-containers"></section>
+      <section class="main-part__section3 container js-containers"></section>
     </main>
 
     <script src="./js/main.js"></script>
