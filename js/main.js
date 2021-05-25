@@ -76,14 +76,14 @@ function paintArticleHtml(nameSerie, imgUrlSerie, idSerie) {
   }
   let article = `<article data-id = ${idSerie} class="palette-item js-containers-item ${classFavorite}">
   <img src="${imgUrlSerie}" alt="serie" />
-  <h3>${nameSerie}</h3>
+  <h3 class="palette-item-name">${nameSerie}</h3>
   </article>`;
 
   return article;
 }
 
 function paintListFavorite(nameSerie, imgUrlSerie, idSerie) {
-  let articleFavorite = `<li class="favorite-list" data-id=${idSerie} "><img src="${imgUrlSerie}" width="50px"/><p>${nameSerie}</p></li>`;
+  let articleFavorite = `<li class="favorite-list" data-id=${idSerie} "><img src="${imgUrlSerie}" width="75px"/><p class="favorite-list-name">${nameSerie}</p></li>`;
 
   return articleFavorite;
 }
